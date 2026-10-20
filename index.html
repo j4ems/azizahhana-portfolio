@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TODO: one-line description of you">
+  <title>Your Name | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="#home" class="logo">Azi</a>
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="home">
+      <h1>AZIZAH HANA </h1>
+      <p>Hi, I am currently a 3rd year Network Computing undergraduate.</p>
+      <a href="#projects">View my work</a>
+    </section>
+
+    <section id="projects">
+  <h2>Projects</h2>
+
+  <div class="filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="networking">Networking</button>
+    <button data-filter="design">Design</button>
+  </div>
+
+  <div class="project-grid">
+
+    <article class="project-card" data-category="networking">
+      <h3>Private 5G Network for a container terminal</h3>
+      <p>Group project proposing a private 5G network for port operations. My role: Research on Industry 4.0 and private 5G.</p>
+    </article>
+
+    <article class="project-card" data-category="networking">
+      <!-- Packet Tracer lab -->
+    </article>
+
+    <article class="project-card" data-category="design">
+      <h3>Personal Portfolio Website</h3>
+      <p> A responsive portfolio built from scratch with HTML,CSS and JavaScript</p>
+    </article>
+
+    <article class="project-card" data-category="design">
+     <h3>EV Dashboard Interface</h3>
+     <p> A dashboard design for an electric vehicle, created in Figma. Focused on battery level, range and speed with a clear, easy-to-read layout.</p>
+    </article>
+
+    <article class="project-card" data-category="networking">
+      <!-- Network cheat sheet or another lab -->
+    </article>
+
+  </div>
+</section>
+
+    <section id="about">
+  <h2>About Me</h2>
+  <div class="about-grid">
+    <div>
+      <p>I'm a Computer Science student and I've always been curious about what happens behind the screen: how a message travels across the world in a fraction of a second, and what keeps it safe along the way.</p>
+      <p>That curiosity is what drew me to networking. I enjoy figuring out how systems connect, solving problems when they don't, and turning what I learn in class into projects I can actually show. This portfolio is one of them, built from scratch with HTML, CSS, and JavaScript.</p>
+    </div>
+  </div>
+</section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form id="contact-form" novalidate>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+      <a href="azizaahhna@gmail.com">Email me directly</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Azizah Hana </p>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+</body>
+</html>

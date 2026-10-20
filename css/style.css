@@ -1,7 +1,7 @@
 /* variables  */
 :root {
-  --bg: #ffffff;
-  --bg-alt: #f5f7fa;
+  --bg: #faf5ec;
+  --bg-alt: #ffffff;
   --text: #1f2937;
   --text-muted: #6b7280;
   --accent: #1e3a8a;
@@ -203,4 +203,76 @@ body.dark {
   --text-muted: #9ca3af;
   --accent: #60a5fa;
   --border: #374151;
+}
+/* (redesign)*/
+#home {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;       /* stacked on phones */
+  justify-content: center;
+  gap: 2rem;
+}
+#home h1 {
+  font-size: 2.75rem;
+  line-height: 1.15;
+}
+#home p { margin-top: 1rem; }
+
+.hero-icon {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #dbe4f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+body.dark .hero-icon { background: var(--bg-alt); }
+
+/* headings */
+section h2 { text-align: center; }
+section h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0.5rem auto 0;
+}
+
+/*services */
+#services .project-card { text-align: center; }
+#services .project-card p { margin: 0 auto; }
+
+/* closing band */
+#cta {
+  max-width: none;
+  background: var(--accent);
+  color: var(--bg);
+  text-align: center;
+}
+#cta h2::after { background: var(--bg); }
+#cta a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg);
+  color: var(--accent);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* on larger screens */
+@media (min-width: 768px) {
+  #home {
+    flex-direction: row;        /* text left, icon right */
+    align-items: center;
+    justify-content: space-between;
+  }
+  #home h1 { font-size: 3.5rem; }
+  .hero-icon { width: 220px; height: 220px; font-size: 4rem; }
 }

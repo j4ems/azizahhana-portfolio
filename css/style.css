@@ -243,10 +243,6 @@ section h2::after {
   margin: 0.5rem auto 0;
 }
 
-/*services */
-#services .project-card { text-align: center; }
-#services .project-card p { margin: 0 auto; }
-
 /* closing band */
 #cta {
   max-width: none;

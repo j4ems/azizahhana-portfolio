@@ -296,3 +296,11 @@ section h2::after {
 }
 .tab-panel { text-align: center; }
 .tab-panel[hidden] { display: none; }
+
+body.dark .logo,
+body.dark #home a,
+body.dark form button,
+body.dark .filters button.active,
+body.dark #back-to-top {
+  color: #111827;
+}

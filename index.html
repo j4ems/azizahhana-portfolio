@@ -14,7 +14,7 @@
   <!-- Navigation: each link opens its own view -->
   <header>
     <nav aria-label="Main navigation">
-      <a href="#home" class="logo">AB</a>
+      <a href="#home" class="logo"><strong>A.h</strong> Portfolio</a>
       <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
       <ul id="nav-links">
         <li><a href="#home">Home</a></li>
@@ -22,7 +22,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button id="theme-toggle" aria-label="Switch between light and dark mode">Theme</button>
+      <button id="theme-toggle" aria-label="Switch between light and dark mode">Mode</button>
     </nav>
   </header>
 
@@ -44,8 +44,8 @@
 
       <h2 class="small-heading">At a glance</h2>
       <dl class="glance">
-        <div><dt>Studying</dt><dd>Network Computing at [university]</dd></div>
-        <div><dt>Interested in</dt><dd>[networking, security, web design]</dd></div>
+        <div><dt>Studying</dt><dd>Network Computing at UNIMAS </dd></div>
+        <div><dt>Interested in</dt><dd>networking, security, web design</dd></div>
         <div><dt>Looking for</dt><dd>An internship to learn from working engineers</dd></div>
       </dl>
     </section>
@@ -53,57 +53,33 @@
     <!-- ABOUT -->
 <section class="view" id="about" hidden>
   <h2>About Me</h2>
-  <div class="tabs">
-    <div class="tab-list" role="tablist" aria-label="About me">
-      <button role="tab" id="tab-bg" aria-controls="panel-bg" aria-selected="true">Background</button>
-      <button role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="false" tabindex="-1">Education</button>
-      <button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Technical Skills</button>
-      <button role="tab" id="tab-int" aria-controls="panel-int" aria-selected="false" tabindex="-1">Activities &amp; Interests</button>
-    </div>
+  <div class="about-grid">
+    <article class="about-card">
+      <h3>Background</h3>
+      <p>Hi, I'm Azizah. I'm from Selangor and I'm studying Network Computing at UNIMAS.</p>
+      <p>[Why you chose this field.]</p>
+    </article>
 
-    <div class="tab-panel" role="tabpanel" id="panel-bg" aria-labelledby="tab-bg">
-      <p>Hi, I'm Azizah Hana. I'm from Selangor and I'm studying Network Computing at UNIMAS.</p>
-      <p>[Why you chose this field, e.g. a moment that got you curious about how networks work.]</p>
-      <p> I am eager to learn more about computer science and apply what I've studied.</p>
-    </div>
+    <article class="about-card">
+      <h3>Education</h3>
+      <p><strong>Bachelor of Computer Science (Network Computing)</strong><br>UNIMAS, 2024-2028</p>
+      <p>Relevant modules: computer networks, web application development</p>
+    </article>
 
-    <div class="tab-panel" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu" hidden>
-      <div class="entry">
-        <h3>Bachelor of Computer Science (Network Computing)</h3>
-        <p>UNIMAS,  2024 to 2028 </p>
-        <p>Relevant modules: computer networks, web application development, artificial intelligence </p>
-      </div>
-      <div class="entry">
-        <h3>Foundation in Life Science</h3>
-        <p>UNIMAS, 2023-2024</p>
-      </div>
-    </div>
+    <article class="about-card">
+      <h3>Technical Skills</h3>
+      <ul>
+        <li>Networking: routing, switching, TCP/IP</li>
+        <li>Web: HTML, CSS, JavaScript</li>
+        <li>Tools: Packet Tracer, Figma, VSCode</li>
+      </ul>
+    </article>
 
-    <div class="tab-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills" hidden>
-      <div class="skill-groups">
-        <div>
-          <h3>Networking</h3>
-          <ul><li>[Routing and switching]</li><li>[VLANs and subnetting]</li><li>[Network design]</li></ul>
-        </div>
-        <div>
-          <h3>Web</h3>
-          <ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-        </div>
-        <div>
-          <h3>Tools</h3>
-          <ul><li>[Cisco Packet Tracer]</li><li>[Wireshark]</li><li>Figma</li></ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-panel" role="tabpanel" id="panel-int" aria-labelledby="tab-int" hidden>
-      <div class="entry">
-        <h3>Activities</h3>
-        <p>PERTEKMA 2024/2025 , Exco Public Relation and Alumni 
-        VHOD of Sponsorship, FCSIT's 22nd FYP Symposium </p>
-      </div>
-      </div>
-    </div>
+    <article class="about-card">
+      <h3>Activities &amp; Interests</h3>
+      <p>Activities: club, event, or volunteering, with your role</p>
+      <p>Interests: Digital illustrating and reading</p>
+    </article>
   </div>
 </section>
 
@@ -144,6 +120,20 @@
     <!-- CONTACT -->
     <section class="view" id="contact" hidden>
       <h2>Get in Touch</h2>
+      <div class="contact-links">
+  <a class="contact-link" href="mailto:azizaahhna@gmail.com">
+    <strong>Email</strong><span>azizaahhna@gmail.com</span>
+  </a>
+  <a class="contact-link" href="https://www.linkedin.com/in/azizahhana" target="_blank" rel="noopener noreferrer">
+    <strong>LinkedIn</strong><span>linkedin.com/in/azizahhana</span>
+  </a>
+  <a class="contact-link" href="https://github.com/j4ems" target="_blank" rel="noopener noreferrer">
+    <strong>GitHub</strong><span>github.com/j4ems</span>
+  </a>
+</div>
+
+<h3 class="form-title">Or send a message</h3>
+<p class="center">This is a demo form, so nothing is actually sent.</p>
       <form id="contact-form" novalidate>
         <label for="name">Name</label>
         <input type="text" id="name" autocomplete="name">
@@ -157,7 +147,7 @@
         <button type="submit">Send message</button>
         <p id="form-status" role="status"></p>
       </form>
-      <p class="center">Or email me directly at <a href="mailto:you@example.com">azizahfiz@example.com</a></p>
+      <p class="center">Or email me directly at <a href="mailto:azizaahhna@gmail.com">azizaahhna@gmail.com</a></p>
     </section>
   </main>
 

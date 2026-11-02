@@ -3,125 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content=" Azizah, a student interested in networking and web design">
-  <title>Azizah's Portfolio</title>
+  <meta name="description" content="Portfolio of Azizah Hana, a Network Computing student seeking an internship.">
+  <title>Azizah Hana | Network Computing Undergraduate</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#home" class="skip-link" id="skip-link">Skip to content</a>
 
+  <!-- Navigation: each link opens its own view -->
   <header>
     <nav aria-label="Main navigation">
-      <a href="#home" class="logo">a-h</a>
-      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <a href="#home" class="logo">AB</a>
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
       <ul id="nav-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button id="theme-toggle" aria-label="Switch between light and dark mode">Theme</button>
     </nav>
   </header>
 
   <main id="main">
-    <section id="home">
-      <h1>AZIZAH HANA </h1>
-      <p>Hi, I am currently a 3rd year Network Computing undergraduate.</p>
-      <a href="#projects">View my work</a>
+    <!-- HOME -->
+    <section class="view" id="home">
+      <div class="hero">
+        <div>
+          <h1>Hello,<br>I'm Azizah.</h1>
+          <p>Network Computing student who likes building reliable networks and clean websites. Explore my page below.</p>
+          <div class="actions">
+            <a href="#about" class="button">Read my profile</a>
+            <a href="#projects" class="button button-outline">View projects</a>
+            <a href="#contact" class="button button-outline">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-mark" aria-hidden="true">AB</div>
+      </div>
+
+      <h2 class="small-heading">At a glance</h2>
+      <dl class="glance">
+        <div><dt>Studying</dt><dd>Network Computing at [university]</dd></div>
+        <div><dt>Interested in</dt><dd>[networking, security, web design]</dd></div>
+        <div><dt>Looking for</dt><dd>An internship to learn from working engineers</dd></div>
+      </dl>
     </section>
-    
-    <section id="projects">
-  <h2>Projects</h2>
 
-  <div class="filters">
-    <button data-filter="all" class="active">All</button>
-    <button data-filter="networking">Networking</button>
-    <button data-filter="design">Design</button>
-  </div>
+    <!-- ABOUT -->
+    <section class="view" id="about" hidden>
+      <h2>About Me</h2>
+      <div class="tabs">
+        <div class="tab-list" role="tablist" aria-label="About me">
+          <button role="tab" id="tab-bio" aria-controls="panel-bio" aria-selected="true">Bio</button>
+          <button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Skills</button>
+          <button role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="false" tabindex="-1">Education</button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-bio" aria-labelledby="tab-bio">
+          <p>Hi, I'm Azizah. I'm a Network Computing student at UNIMAS, curious about how data travels across the world and what keeps it safe along the way.</p>
+          <p>I enjoy solving problems when systems don't connect, and turning what I learn in class into projects I can show.</p>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills" hidden>
+          <p>Networking: [routing, switching, VLANs]. Tools: [Packet Tracer, Wireshark]. Web: HTML, CSS, JavaScript. Design: Figma.</p>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu" hidden>
+          <p>Bachelor of Computer Science (Network Computing), UNIMAS, expected graduation 2028.</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="project-grid">
+    <!-- PROJECTS -->
+    <section class="view" id="projects" hidden>
+      <h2>Projects</h2>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="networking">Networking</button>
+        <button data-filter="web">Web</button>
+        <button data-filter="design">Design</button>
+      </div>
+      <div class="project-grid">
+        <article class="project-card" data-category="networking">
+          <h3>Private 5G for a Container Terminal</h3>
+          <p>Group project (5 students) proposing a private 5G network for Industry 4.0 operations at a container terminal. My role: researching Industry 4.0 and private 5G.</p>
+        </article>
+        <article class="project-card" data-category="networking">
+          <h3>[Packet Tracer Lab]</h3>
+          <p>[Describe the network you built, the tools used, and what you tested.]</p>
+        </article>
+        <article class="project-card" data-category="design">
+          <h3>EV Dashboard Interface</h3>
+          <p>A dashboard for an electric vehicle, designed in Figma. [Add what it displays.]</p>
+          <a href="#projects">View design</a>
+        </article>
+        <article class="project-card" data-category="web">
+          <h3>Personal Portfolio Website</h3>
+          <p>A responsive portfolio built from scratch with HTML, CSS, and JavaScript, with tabs, dark mode, filtering, and form validation.</p>
+        </article>
+        <article class="project-card" data-category="web">
+          <h3>[Fifth Project]</h3>
+          <p>[A small build or lab, such as a subnet calculator.]</p>
+        </article>
+      </div>
+    </section>
 
-    <article class="project-card" data-category="networking">
-      <h3>Private 5G Network for a container terminal</h3>
-      <p>Group project proposing a private 5G network for port operations. My role: Research on Industry 4.0 and private 5G.</p>
-    </article>
-
-    <article class="project-card" data-category="networking">
-      <h3>draft</h3>
-      <p>draft ..</p>
-    </article>
-
-    <article class="project-card" data-category="design">
-      <h3>Personal Portfolio Website</h3>
-      <p> A responsive portfolio built from scratch with HTML,CSS and JavaScript</p>
-    </article>
-
-    <article class="project-card" data-category="design">
-     <h3>EV Dashboard Interface</h3>
-     <p> A dashboard design for an electric vehicle, created in Figma. Focused on battery level, range and speed with a clear, easy-to-read layout.</p>
-    </article>
-
-    <article class="project-card" data-category="networking">
-      <h3>draft</h3>
-      <p>draft ..</p>
-    </article>
-
-  </div>
-</section>
-
-    <section id="about">
-  <h2>About Me</h2>
-
-  <div class="tabs">
-    <div class="tab-list" role="tablist" aria-label="About me sections">
-      <button role="tab" id="tab-bio" aria-controls="panel-bio" aria-selected="true">Bio</button>
-      <button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Skills</button>
-      <button role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="false" tabindex="-1">Education</button>
-    </div>
-
-    <div class="tab-panel" role="tabpanel" id="panel-bio" aria-labelledby="tab-bio">
-      <p>Your bio paragraphs here.</p>
-    </div>
-
-    <div class="tab-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills" hidden>
-      <p>Your skills here.</p>
-    </div>
-
-    <div class="tab-panel" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu" hidden>
-      <p>Your education here.</p>
-    </div>
-  </div>
-</section>
-
-    <section id="contact">
-      <h2>Contact</h2>
+    <!-- CONTACT -->
+    <section class="view" id="contact" hidden>
+      <h2>Get in Touch</h2>
       <form id="contact-form" novalidate>
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-
+        <input type="text" id="name" autocomplete="name">
+        <small class="error" id="name-error"></small>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-
+        <input type="email" id="email" autocomplete="email">
+        <small class="error" id="email-error"></small>
         <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <button type="submit">Send</button>
+        <textarea id="message"></textarea>
+        <small class="error" id="message-error"></small>
+        <button type="submit">Send message</button>
+        <p id="form-status" role="status"></p>
       </form>
-      <a href="azizaahhna@gmail.com">Email me directly</a>
+      <p class="center">Or email me directly at <a href="mailto:you@example.com">you@example.com</a></p>
     </section>
   </main>
 
-<section id="cta">
-  <h2>Any inquiries?</h2>
-  <a href="#contact">Get in touch</a>
-</section>
-  
-  <footer>
-    <p>&copy; 2026 Azizah Hana </p>
-  </footer>
-
-  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <footer><p>&copy; 2026 Azizah Hana</p></footer>
+  <button id="back-to-top" aria-label="Back to top">Top</button>
 </body>
 </html>

@@ -116,3 +116,34 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+// ========== 7. Tabs ==========
+document.querySelectorAll(".tabs").forEach((tabs) => {
+  const buttons = tabs.querySelectorAll('[role="tab"]');
+  const panels = tabs.querySelectorAll('[role="tabpanel"]');
+
+  function selectTab(selected) {
+    buttons.forEach((button) => {
+      const isSelected = button === selected;
+      button.setAttribute("aria-selected", isSelected);
+      button.tabIndex = isSelected ? 0 : -1;
+    });
+    panels.forEach((panel) => {
+      panel.hidden = panel.id !== selected.getAttribute("aria-controls");
+    });
+  }
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => selectTab(button));
+
+    // Arrow keys move between tabs (keyboard accessibility)
+    button.addEventListener("keydown", (event) => {
+      let next = null;
+      if (event.key === "ArrowRight") next = buttons[(index + 1) % buttons.length];
+      if (event.key === "ArrowLeft") next = buttons[(index - 1 + buttons.length) % buttons.length];
+      if (next) {
+        next.focus();
+        selectTab(next);
+      }
+    });
+  });
+});

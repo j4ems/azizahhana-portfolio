@@ -56,9 +56,11 @@ nav {
   gap: 0.5rem; padding: 0.75rem 1.5rem; max-width: 1100px; margin: 0 auto;
 }
 .logo {
-  background: var(--accent); color: var(--on-accent); padding: 0.3rem 0.7rem;
-  border-radius: 4px; font-weight: 700; text-decoration: none;
+  color: var(--text);
+  font-size: 1.15rem;
+  text-decoration: none;
 }
+.logo strong { color: var(--accent); font-weight: 800; }
 #nav-links { display: none; list-style: none; flex-direction: column; width: 100%; order: 3; gap: 0.25rem; padding: 0.5rem 0; }
 #nav-links.open { display: flex; }
 #nav-links a {
@@ -169,3 +171,46 @@ footer p { margin: 0 auto; }
 @media (min-width: 768px) {
   .skill-groups { grid-template-columns: repeat(3, 1fr); }
 }
+/* ========== About cards (floating on hover) ========== */
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.about-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--highlight);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.about-card p + p { margin-top: 0.75rem; }
+.about-card ul { list-style: none; }
+.about-card li { color: var(--text-muted); padding: 0.15rem 0; }
+
+/* Floating effect, shared by cards and contact links */
+.about-card, .project-card, .contact-link {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.about-card:hover, .project-card:hover, .contact-link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(27, 38, 50, 0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-card, .project-card, .contact-link { transition: none; }
+  .about-card:hover, .project-card:hover, .contact-link:hover { transform: none; }
+}
+@media (min-width: 768px) {
+  .about-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* ========== Contact links ========== */
+.contact-links { display: grid; gap: 1rem; max-width: 600px; margin: 0 auto 2.5rem; }
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.25rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--highlight);
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+}
+.contact-link span { color: var(--accent); }
+.form-title { text-align: center; margin-bottom: 0.5rem; }

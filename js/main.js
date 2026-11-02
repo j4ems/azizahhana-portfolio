@@ -1,149 +1,119 @@
-// ========== 1. Mobile menu toggle ==========
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
+// Helpers
+const $ = (selector, parent = document) => parent.querySelector(selector);
+const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+
+// ========== 1. Page tabs: each nav link opens its own view ==========
+const views = $$(".view");
+const navAnchors = $$("#nav-links a");
+
+function showView() {
+  const target = views.find((v) => v.id === location.hash.slice(1));
+  if (!target) return; // ignore unknown hashes, keep the current view
+
+  views.forEach((v) => (v.hidden = v !== target));
+  navAnchors.forEach((a) => {
+    if (a.getAttribute("href") === "#" + target.id) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+
+  window.scrollTo(0, 0);
+  const heading = $("h1, h2", target); // move focus for keyboard and screen-reader users
+  heading.tabIndex = -1;
+  heading.focus({ preventScroll: true });
+}
+window.addEventListener("hashchange", showView);
+if (!views.some((v) => v.id === location.hash.slice(1))) location.hash = "#home";
+showView();
+
+// ========== 2. Mobile menu ==========
+const menuToggle = $("#menu-toggle");
+const navLinks = $("#nav-links");
 
 menuToggle.addEventListener("click", () => {
   const isOpen = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", isOpen); // for screen readers
+  menuToggle.setAttribute("aria-expanded", isOpen);
 });
-
-// Close the menu after clicking a link
-navLinks.querySelectorAll("a").forEach((link) => {
+navAnchors.forEach((link) =>
   link.addEventListener("click", () => {
     navLinks.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
-  });
-});
-
-// ========== 2. Dark / light theme toggle (saved) ==========
-const themeToggle = document.getElementById("theme-toggle");
-
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-}
-
-themeToggle.addEventListener("click", () => {
-  const isDark = document.body.classList.toggle("dark");
-  localStorage.setItem("theme", isDark ? "dark" : "light");
-});
-
-// ========== 3. Highlight active nav link on scroll ==========
-const sections = document.querySelectorAll("main section");
-const links = document.querySelectorAll("#nav-links a");
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        links.forEach((link) => {
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === "#" + entry.target.id
-          );
-        });
-      }
-    });
-  },
-  { threshold: 0.5 } // section is "active" when half is visible
+  })
 );
 
-sections.forEach((section) => observer.observe(section));
+// ========== 3. Dark / light theme (remembered) ==========
+try {
+  if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+} catch (e) { /* storage unavailable: ignore */ }
+
+$("#theme-toggle").addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+  try { localStorage.setItem("theme", isDark ? "dark" : "light"); } catch (e) {}
+});
 
 // ========== 4. Project filter ==========
-const filterButtons = document.querySelectorAll(".filters button");
-const cards = document.querySelectorAll(".project-card");
+const filterButtons = $$(".filters button");
+const cards = $$(".project-card");
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
-
-    filterButtons.forEach((b) => b.classList.remove("active"));
-    button.classList.add("active");
-
+    filterButtons.forEach((b) => b.classList.toggle("active", b === button));
     cards.forEach((card) => {
       card.hidden = !(filter === "all" || card.dataset.category === filter);
     });
   });
 });
 
-// ========== 5. Contact form validation ==========
-const form = document.getElementById("contact-form");
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // stop the page from reloading
-
-  // Remove old error messages
-  form.querySelectorAll(".error").forEach((el) => el.remove());
-
-  const fields = [
-    { input: form.name, message: "Please enter your name." },
-    { input: form.email, message: "Please enter a valid email." },
-    { input: form.message, message: "Please enter a message." },
-  ];
-
-  let valid = true;
-
-  fields.forEach(({ input, message }) => {
-    const value = input.value.trim();
-    const emailBad = input.type === "email" && !value.includes("@");
-
-    if (value === "" || emailBad) {
-      const error = document.createElement("p");
-      error.className = "error";
-      error.textContent = message;
-      error.style.color = "#b91c1c";
-      input.after(error);
-      valid = false;
-    }
-  });
-
-  if (valid) {
-    form.reset();
-    const success = document.createElement("p");
-    success.className = "error";
-    success.textContent = "Thanks! Your message was validated (demo only).";
-    form.append(success);
-  }
-});
-
-// ========== 6. Back-to-top button ==========
-const backToTop = document.getElementById("back-to-top");
-
-window.addEventListener("scroll", () => {
-  backToTop.style.display = window.scrollY > 400 ? "block" : "none";
-});
-
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-// ========== 7. Tabs ==========
-document.querySelectorAll(".tabs").forEach((tabs) => {
-  const buttons = tabs.querySelectorAll('[role="tab"]');
-  const panels = tabs.querySelectorAll('[role="tabpanel"]');
+// ========== 5. About tabs (arrow keys supported) ==========
+$$(".tabs").forEach((tabs) => {
+  const buttons = $$('[role="tab"]', tabs);
+  const panels = $$('[role="tabpanel"]', tabs);
 
   function selectTab(selected) {
-    buttons.forEach((button) => {
-      const isSelected = button === selected;
-      button.setAttribute("aria-selected", isSelected);
-      button.tabIndex = isSelected ? 0 : -1;
+    buttons.forEach((b) => {
+      const active = b === selected;
+      b.setAttribute("aria-selected", active);
+      b.tabIndex = active ? 0 : -1;
     });
-    panels.forEach((panel) => {
-      panel.hidden = panel.id !== selected.getAttribute("aria-controls");
-    });
+    panels.forEach((p) => (p.hidden = p.id !== selected.getAttribute("aria-controls")));
   }
 
-  buttons.forEach((button, index) => {
+  buttons.forEach((button, i) => {
     button.addEventListener("click", () => selectTab(button));
-
-    // Arrow keys move between tabs (keyboard accessibility)
-    button.addEventListener("keydown", (event) => {
+    button.addEventListener("keydown", (e) => {
       let next = null;
-      if (event.key === "ArrowRight") next = buttons[(index + 1) % buttons.length];
-      if (event.key === "ArrowLeft") next = buttons[(index - 1 + buttons.length) % buttons.length];
-      if (next) {
-        next.focus();
-        selectTab(next);
-      }
+      if (e.key === "ArrowRight") next = buttons[(i + 1) % buttons.length];
+      if (e.key === "ArrowLeft") next = buttons[(i - 1 + buttons.length) % buttons.length];
+      if (next) { next.focus(); selectTab(next); }
     });
   });
 });
+
+// ========== 6. Contact form validation ==========
+const form = $("#contact-form");
+const status = $("#form-status");
+const rules = [
+  { id: "name", message: "Enter your name.", valid: (v) => v.length > 0 },
+  { id: "email", message: "Enter a valid email, like name@example.com.",
+    valid: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+  { id: "message", message: "Enter a message.", valid: (v) => v.length > 0 },
+];
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // front-end only: nothing is sent
+  let allValid = true;
+  rules.forEach(({ id, message, valid }) => {
+    const input = $("#" + id);
+    const ok = valid(input.value.trim());
+    $("#" + id + "-error").textContent = ok ? "" : message;
+    input.setAttribute("aria-invalid", !ok);
+    if (!ok) allValid = false;
+  });
+  status.textContent = allValid ? "Thanks! Your message looks good (demo form, nothing was sent)." : "";
+  if (allValid) form.reset();
+});
+
+// ========== 7. Back-to-top button ==========
+const backToTop = $("#back-to-top");
+window.addEventListener("scroll", () => backToTop.classList.toggle("show", window.scrollY > 400));
+backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));

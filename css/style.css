@@ -153,3 +153,19 @@ footer p { margin: 0 auto; }
 @media (min-width: 1024px) {
   .project-grid { grid-template-columns: repeat(3, 1fr); }
 }
+/* ========== About details ========== */
+.tab-list { flex-wrap: wrap; }
+.entry { margin: 0 auto 1.5rem; max-width: 65ch; }
+.skill-groups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.skill-groups ul {
+  list-style: none;
+  color: var(--text-muted);
+}
+.skill-groups li { padding: 0.15rem 0; }
+@media (min-width: 768px) {
+  .skill-groups { grid-template-columns: repeat(3, 1fr); }
+}

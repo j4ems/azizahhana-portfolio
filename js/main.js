@@ -1,3 +1,4 @@
+const SITE_NAME = "Azizah";
 // Helpers
 const $ = (selector, parent = document) => parent.querySelector(selector);
 const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
@@ -14,6 +15,9 @@ function showView() {
   navAnchors.forEach((a) => {
     if (a.getAttribute("href") === "#" + target.id) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
+    
+    const label = navAnchors.find((a) => a.getAttribute("href") === "#" + target.id).textContent;
+document.title = label + " | " + SITE_NAME;
   });
 
   window.scrollTo(0, 0);

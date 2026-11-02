@@ -51,26 +51,61 @@
     </section>
 
     <!-- ABOUT -->
-    <section class="view" id="about" hidden>
-      <h2>About Me</h2>
-      <div class="tabs">
-        <div class="tab-list" role="tablist" aria-label="About me">
-          <button role="tab" id="tab-bio" aria-controls="panel-bio" aria-selected="true">Bio</button>
-          <button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Skills</button>
-          <button role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="false" tabindex="-1">Education</button>
+<section class="view" id="about" hidden>
+  <h2>About Me</h2>
+  <div class="tabs">
+    <div class="tab-list" role="tablist" aria-label="About me">
+      <button role="tab" id="tab-bg" aria-controls="panel-bg" aria-selected="true">Background</button>
+      <button role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="false" tabindex="-1">Education</button>
+      <button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Technical Skills</button>
+      <button role="tab" id="tab-int" aria-controls="panel-int" aria-selected="false" tabindex="-1">Activities &amp; Interests</button>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-bg" aria-labelledby="tab-bg">
+      <p>Hi, I'm Azizah Hana. I'm from Selangor and I'm studying Network Computing at UNIMAS.</p>
+      <p>[Why you chose this field, e.g. a moment that got you curious about how networks work.]</p>
+      <p> I am eager to learn more about computer science and apply what I've studied.</p>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu" hidden>
+      <div class="entry">
+        <h3>Bachelor of Computer Science (Network Computing)</h3>
+        <p>UNIMAS,  2024 to 2028 </p>
+        <p>Relevant modules: computer networks, web application development, artificial intelligence </p>
+      </div>
+      <div class="entry">
+        <h3>Foundation in Life Science</h3>
+        <p>UNIMAS, 2023-2024</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills" hidden>
+      <div class="skill-groups">
+        <div>
+          <h3>Networking</h3>
+          <ul><li>[Routing and switching]</li><li>[VLANs and subnetting]</li><li>[Network design]</li></ul>
         </div>
-        <div class="tab-panel" role="tabpanel" id="panel-bio" aria-labelledby="tab-bio">
-          <p>Hi, I'm Azizah. I'm a Network Computing student at UNIMAS, curious about how data travels across the world and what keeps it safe along the way.</p>
-          <p>I enjoy solving problems when systems don't connect, and turning what I learn in class into projects I can show.</p>
+        <div>
+          <h3>Web</h3>
+          <ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
         </div>
-        <div class="tab-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills" hidden>
-          <p>Networking: [routing, switching, VLANs]. Tools: [Packet Tracer, Wireshark]. Web: HTML, CSS, JavaScript. Design: Figma.</p>
-        </div>
-        <div class="tab-panel" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu" hidden>
-          <p>Bachelor of Computer Science (Network Computing), UNIMAS, expected graduation 2028.</p>
+        <div>
+          <h3>Tools</h3>
+          <ul><li>[Cisco Packet Tracer]</li><li>[Wireshark]</li><li>Figma</li></ul>
         </div>
       </div>
-    </section>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-int" aria-labelledby="tab-int" hidden>
+      <div class="entry">
+        <h3>Activities</h3>
+        <p>PERTEKMA 2024/2025 , Exco Public Relation and Alumni 
+        VHOD of Sponsorship, FCSIT's 22nd FYP Symposium </p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- PROJECTS -->
     <section class="view" id="projects" hidden>
@@ -122,7 +157,7 @@
         <button type="submit">Send message</button>
         <p id="form-status" role="status"></p>
       </form>
-      <p class="center">Or email me directly at <a href="mailto:you@example.com">you@example.com</a></p>
+      <p class="center">Or email me directly at <a href="mailto:you@example.com">azizahfiz@example.com</a></p>
     </section>
   </main>
 

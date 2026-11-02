@@ -272,3 +272,27 @@ section h2::after {
   #home h1 { font-size: 3.5rem; }
   .hero-icon { width: 220px; height: 220px; font-size: 4rem; }
 }
+/* ========== Tabs ========== */
+.tab-list {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.tab-list button {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 0.75rem 1.25rem;
+  font: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.tab-list button[aria-selected="true"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+.tab-panel { text-align: center; }
+.tab-panel[hidden] { display: none; }

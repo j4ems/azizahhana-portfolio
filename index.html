@@ -13,7 +13,7 @@
 
   <header>
     <nav aria-label="Main navigation">
-      <a href="#home" class="logo">Azi</a>
+      <a href="#home" class="logo">a-h</a>
       <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <ul id="nav-links">
         <li><a href="#home">Home</a></li>
@@ -73,10 +73,24 @@
 
     <section id="about">
   <h2>About Me</h2>
-  <div class="about-grid">
-    <div>
-      <p>I'm a Computer Science student and I've always been curious about what happens behind the screen: how a message travels across the world in a fraction of a second, and what keeps it safe along the way.</p>
-      <p>That curiosity is what drew me to networking. I enjoy figuring out how systems connect, solving problems when they don't, and turning what I learn in class into projects I can actually show. This portfolio is one of them, built from scratch with HTML, CSS, and JavaScript.</p>
+
+  <div class="tabs">
+    <div class="tab-list" role="tablist" aria-label="About me sections">
+      <button role="tab" id="tab-bio" aria-controls="panel-bio" aria-selected="true">Bio</button>
+      <button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Skills</button>
+      <button role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="false" tabindex="-1">Education</button>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-bio" aria-labelledby="tab-bio">
+      <p>Your bio paragraphs here.</p>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills" hidden>
+      <p>Your skills here.</p>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu" hidden>
+      <p>Your education here.</p>
     </div>
   </div>
 </section>
